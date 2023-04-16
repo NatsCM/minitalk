@@ -1,51 +1,28 @@
-CFLAGS = -Wall -Werror -Wextra
+SERVER_SRCS	= server.c ft_atoi.c
+CLIENT_SRCS	= client.c ft_atoi.c
+HEADERS		= minitalk.h
 
-RM = rm -f
+CC			= clang -Wall -Werror -Wextra
 
-CC = gcc
+%.o: %.c ${HEADERS}
+			${CC} $< -c -o $@
 
-CLIENT = client
+all:		server client
 
-CLIENTSRC = client.c \
-			ft_atoi.c
+server:		${SERVER_SRCS:.c=.o} ${HEADERS}
+			${CC} ${SERVER_SRCS} -o server
 
-CLIENTOBJ = $(CLIENTSRC:.c=.o)
-
-SERVER = server
-
-SERVERSRC = server.c
-
-SERVEROBJ = $(SERVERSRC:.c=.o)
-
-HEADER = minitalk.h
-		
-PINK=\033[0,35m
-
-CYAN=\033[0,36m
-
-NC=\033[0m
-
-%.o: %.c $(HEADER)
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-all:	$(CLIENT) $(SERVER)
-
-	$(CLIENT): $(CIENTOBJ)
-		$(CC) $(CFLAGS) $(CLIENTOBJ) -o $(CLIENT)
-
-	$(SERVER): $(SERVEROBJ)
-		$(CC) $(CFLAGS) $(SERVEROBJ) -o $(SERVER)
-		@echo "$(CYAN)Compilation done !$(NC)"
+client:		${CLIENT_SRCS:.c=.o} ${HEADERS}
+			${CC} ${CLIENT_SRCS} -o client
 
 clean:
-	${RM} ${CLIENTOBJ} ${SERVEROBJ}
+			rm -rdf ${SERVER_SRCS:.c=.o} ${CLIENT_SRCS:.c=.o}
+			@make clean -C
 
-fclean:	clean
-	${RM} ${CLIENT} ${SERVER}
+fclean:		clean
+			rm -rdf client server
+			@make fclean -C
 
-re:	fclean all
+re:			fclean all
 
-test:
-	git clone 
-
-.PHONY:	all clean fclean re
+.PHONY:		all clean fclean re

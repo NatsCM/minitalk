@@ -6,7 +6,7 @@
 /*   By: ncardozo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 13:11:56 by ncardozo          #+#    #+#             */
-/*   Updated: 2023/04/16 15:23:47 by ncardozo         ###   ########.fr       */
+/*   Updated: 2023/04/16 17:41:07 by ncardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	print_pid(pid_t pid)
 {
 	write(1, "PID: ", 5);
 	ft_putnbr(pid);
+	write(1, "\n", 1);
 }
 
 void	handler_sig(int sig, siginfo_t *info, void *var)
@@ -24,6 +25,7 @@ void	handler_sig(int sig, siginfo_t *info, void *var)
 	static char	c;
 
 	(void)var;
+	(void)info;
 	c |= (sig == SIGUSR1);
 	i++;
 	if (i == 8)
@@ -36,7 +38,7 @@ void	handler_sig(int sig, siginfo_t *info, void *var)
 		c <<= 1;
 }
 
-int	main(int ac, char **av)
+int	main(void)
 {
 	struct sigaction	sa;
 
