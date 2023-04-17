@@ -6,7 +6,7 @@
 /*   By: ncardozo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 13:11:30 by ncardozo          #+#    #+#             */
-/*   Updated: 2023/04/16 14:50:33 by ncardozo         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:16:45 by ncardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int	main(int ac, char **av)
 	int			i;
 
 	i = 0;
-	pid = ft_atoi(av[1]);
 	if (ac != 3)
 		return (write(1, "Invalid number of arguments", 27));
+	pid = ft_atoi(av[1]);
 	while (av[2][i])
 	{
 		send_char(pid, av[2][i]);

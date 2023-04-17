@@ -17,11 +17,9 @@ client:		${CLIENT_SRCS:.c=.o} ${HEADERS}
 
 clean:
 			rm -rdf ${SERVER_SRCS:.c=.o} ${CLIENT_SRCS:.c=.o}
-			@make clean -C
 
 fclean:		clean
 			rm -rdf client server
-			@make fclean -C
 
 re:			fclean all
 
