@@ -1,48 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncardozo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 13:11:30 by ncardozo          #+#    #+#             */
-/*   Updated: 2023/04/17 18:16:45 by ncardozo         ###   ########.fr       */
+/*   Created: 2022/11/13 09:36:49 by ncardozo          #+#    #+#             */
+/*   Updated: 2023/04/18 15:16:26 by ncardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minilibft.h"
 
-void	send_char(pid_t pid, char c)
+int	ft_printf(const char *format, ...)
 {
-	int	i;
+	va_list	args;
+	int		size;
+	int		i;
 
-	i = 7;
-	while (i >= 0)
+	size = 0;
+	i = -1;
+	va_start(args, format);
+	while (format[++i])
 	{
-		if (c >> i & 1)
+		if (format[i] == '%')
 		{
-			kill(pid, SIGUSR1);
+			i++;
+			size += ft_formats(format[i], args);
 		}
 		else
-			kill(pid, SIGUSR2);
-		i--;
-		usleep(100);
+			size += ft_writechar(format[i]);
 	}
-}
-
-int	main(int ac, char **av)
-{
-	pid_t		pid;
-	int			i;
-
-	i = 0;
-	if (ac != 3)
-		return (write(1, "Invalid number of arguments", 27));
-	pid = ft_atoi(av[1]);
-	while (av[2][i])
-	{
-		send_char(pid, av[2][i]);
-		i++;
-	}
-	return (0);
+	va_end(args);
+	return (size);
 }

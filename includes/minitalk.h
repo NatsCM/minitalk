@@ -5,27 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncardozo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 13:06:36 by ncardozo          #+#    #+#             */
-/*   Updated: 2023/04/16 15:27:18 by ncardozo         ###   ########.fr       */
+/*   Created: 2023/04/18 14:13:23 by ncardozo          #+#    #+#             */
+/*   Updated: 2023/04/20 23:26:00 by ncardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
 # define MINITALK_H
+# include "../minilibft/minilibft.h"
 # include <sys/types.h>
-# include <unistd.h>
 # include <stdlib.h>
 # include <signal.h>
-# include <stdio.h>
-
-/*------------------------ utils -----------------------*/
-void	ft_putchar(char c);
-void	ft_putnbr(int nb);
-int		ft_atoi(char *s);
-/*----------------- server fonctions -------------------*/
-void	print_pid(pid_t pid);
-void	handler_sig(int sig, siginfo_t *info, void *var);
-/*----------------- client fonctions -------------------*/
-void	send_char(pid_t pid, char c);
+/*----------------- ANSI Color codes -------------------*/
+# define BBBL "\e[38;5;123m"
+# define LGTV "\e[38;5;183m"
+# define LGTP "\e[38;5;212m"
+# define LPCH "\e[38;5;210m"
+# define YLLW "\e[38;5;222m"
 
 #endif

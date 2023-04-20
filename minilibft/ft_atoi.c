@@ -6,13 +6,13 @@
 /*   By: ncardozo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:59:08 by ncardozo          #+#    #+#             */
-/*   Updated: 2023/04/14 19:35:22 by ncardozo         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:15:57 by ncardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minilibft.h"
 
-void	ft_putchar(char c)
+void	ft_write_char(char c)
 {
 	write(1, &c, 1);
 }
@@ -22,11 +22,11 @@ void	ft_putnbr(int nb)
 	if (nb < 0)
 	{
 		nb *= -1;
-		ft_putchar('-');
+		ft_write_char('-');
 	}
 	if (nb > 9)
 		ft_putnbr(nb / 10);
-	ft_putchar(nb % 10 + 48);
+	ft_write_char(nb % 10 + 48);
 }
 
 int	ft_atoi(char *s)
@@ -38,7 +38,6 @@ int	ft_atoi(char *s)
 	i = 0;
 	neg = 1;
 	nb = 0;
-
 	if (s[i] <= 32)
 		++i;
 	if (s[i] == '+' || s[i] == '-')
