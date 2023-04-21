@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncardozo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ncardozo <ncardozo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:27:00 by ncardozo          #+#    #+#             */
-/*   Updated: 2023/04/20 23:27:14 by ncardozo         ###   ########.fr       */
+/*   Updated: 2023/04/21 16:23:20 by ncardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ static void	handler_sig(int sig, siginfo_t *info_cl, void *var)
 	i++;
 	if (i == 8)
 	{
+		if (c == '\0')
+			send_sig_to_cl(SIGUSR1);
 		write(1, &c, 1);
 		i = 0;
 		c = 0;
-		if (!c)
-			send_sig_to_cl(SIGUSR1);
 	}
 	else
 		c <<= 1;

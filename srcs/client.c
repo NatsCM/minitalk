@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncardozo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ncardozo <ncardozo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 13:11:30 by ncardozo          #+#    #+#             */
-/*   Updated: 2023/04/20 23:24:34 by ncardozo         ###   ########.fr       */
+/*   Updated: 2023/04/21 16:27:58 by ncardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ static void	send_char(pid_t pid, char c)
 	}
 }
 
+//static void	handler(int sig)
+//{
+//	if (sig == SIGUSR1)
+//	ft_printf(LGTP"\nMessage received and printed with succes :)\n");
+//}
+
 static void	handler(int sig)
 {
 	static int	bool = 1;
@@ -56,11 +62,13 @@ static void	handler(int sig)
 		ft_printf(LGTP"\nMessage received and printed with succes :)\n");
 		bool = 0;
 	}
-	if (sig == SIGUSR2)
-	{
-		ft_printf(LGTV"\nSending message to server ...\n");
+	else 
 		bool = 1;
-	}
+		exit (0);
+	//{
+	//	ft_printf(LGTV"\nSending message to server ...\n");
+	//	bool = 1;
+	//}
 }
 
 int	main(int ac, char **av)
@@ -86,5 +94,6 @@ int	main(int ac, char **av)
 		send_char(pid, av[2][i]);
 		i++;
 	}
+	send_char(pid, '\0');
 	return (0);
 }
