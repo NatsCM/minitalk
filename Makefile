@@ -27,9 +27,12 @@ CFLAGS			= -Wall -Wextra -Werror -O3
 .c.o:
 			@${CC} $(CFLAGS) -c $< -o $@
 
-all:			$(CLIENT) $(SERVER)
+all:		MINILIBFT	$(CLIENT) $(SERVER)
 
-$(LIBFT):
+MINILIBFT:
+	make -C ./minilibft/
+
+$(MINILIBFT):
 			@/bin/echo -n "$(shell tput setaf 212)Compiling Miniibft: $(shell tput sgr0)"
 				@make -sC minilibft > /dev/null
 			@echo "$(shell tput setaf 222)[OK]$(shell tput sgr0)"
