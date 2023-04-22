@@ -6,11 +6,21 @@
 /*   By: ncardozo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:59:08 by ncardozo          #+#    #+#             */
-/*   Updated: 2023/04/18 15:15:57 by ncardozo         ###   ########.fr       */
+/*   Updated: 2023/04/22 06:21:04 by ncardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minilibft.h"
+
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
 void	ft_write_char(char c)
 {

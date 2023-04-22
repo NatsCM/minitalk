@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncardozo <ncardozo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncardozo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 13:11:30 by ncardozo          #+#    #+#             */
-/*   Updated: 2023/04/21 16:27:58 by ncardozo         ###   ########.fr       */
+/*   Updated: 2023/04/22 06:30:02 by ncardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,6 @@ static void	send_char(pid_t pid, char c)
 	}
 }
 
-//static void	handler(int sig)
-//{
-//	if (sig == SIGUSR1)
-//	ft_printf(LGTP"\nMessage received and printed with succes :)\n");
-//}
-
 static void	handler(int sig)
 {
 	static int	bool = 1;
@@ -62,13 +56,8 @@ static void	handler(int sig)
 		ft_printf(LGTP"\nMessage received and printed with succes :)\n");
 		bool = 0;
 	}
-	else 
+	else
 		bool = 1;
-		exit (0);
-	//{
-	//	ft_printf(LGTV"\nSending message to server ...\n");
-	//	bool = 1;
-	//}
 }
 
 int	main(int ac, char **av)

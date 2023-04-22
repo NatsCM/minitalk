@@ -6,7 +6,7 @@
 /*   By: ncardozo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 18:44:36 by ncardozo          #+#    #+#             */
-/*   Updated: 2023/04/18 13:55:36 by ncardozo         ###   ########.fr       */
+/*   Updated: 2023/04/22 06:21:53 by ncardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int		ft_put_p(unsigned long nb, int maj);
 int		ft_putchar(char c);
 void	ft_putnbr(int nb);
 int		ft_atoi(char *s);
+int		ft_strlen(char *s);
 
 #endif
