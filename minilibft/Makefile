@@ -6,7 +6,7 @@
 #    By: ncardozo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/13 09:59:29 by ncardozo          #+#    #+#              #
-#    Updated: 2023/04/18 13:31:28 by ncardozo         ###   ########.fr        #
+#    Updated: 2023/04/22 22:14:34 by ncardozo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS = 	ft_printf.c \
 		ft_str.c \
 		ft_formats.c \
 		ft_atoi.c \
+		ft_memcpy.c \
 
 OBJS = ${SRCS:.c=.o}
 		

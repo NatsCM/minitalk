@@ -6,7 +6,7 @@
 /*   By: ncardozo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 18:44:36 by ncardozo          #+#    #+#             */
-/*   Updated: 2023/04/22 06:21:53 by ncardozo         ###   ########.fr       */
+/*   Updated: 2023/04/22 22:10:21 by ncardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int		ft_putchar(char c);
 void	ft_putnbr(int nb);
 int		ft_atoi(char *s);
 int		ft_strlen(char *s);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 #endif
