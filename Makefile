@@ -6,7 +6,7 @@ SERVER			= server
 
 SRCS_SERVER		= $(addprefix srcs/, server.c)
 
-ifndef WITH_BONUS
+ifndef
 	OBJS_CLIENT	= $(SRCS_CLIENT:.c=.o)
 	OBJS_SERVER	= $(SRCS_SERVER:.c=.o)
 else
@@ -32,10 +32,10 @@ all:		MINILIBFT	$(CLIENT) $(SERVER)
 MINILIBFT:
 	make -C ./minilibft/
 
-# $(MINILIBFT):
-# 			@/bin/echo -n "$(shell tput setaf 225)Compiling Miniibft: $(shell tput sgr0)"
-# 				@make -sC minilibft > /dev/null
-# 			@echo "$(shell tput setaf 222)[OK]$(shell tput sgr0)"
+$(MINILIBFT):
+			@/bin/echo -n "$(shell tput setaf 225)Compiling Miniibft: $(shell tput sgr0)"
+				@make -sC minilibft > /dev/null
+			@echo "$(shell tput setaf 222)[OK]$(shell tput sgr0)"
 
 $(CLIENT):		$(OBJS_CLIENT) $(LIBFT)
 			@/bin/echo -n "$(shell tput setaf 225)Compiling \"$(CLIENT)\": $(shell tput sgr0)"
