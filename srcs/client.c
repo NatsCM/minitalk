@@ -6,7 +6,7 @@
 /*   By: ncardozo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 13:11:30 by ncardozo          #+#    #+#             */
-/*   Updated: 2023/04/22 06:30:02 by ncardozo         ###   ########.fr       */
+/*   Updated: 2023/04/23 06:32:53 by ncardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,24 @@
 static void	error_message(int error)
 {
 	if (error == 1)
-		ft_printf(LPCH"\nWrong PID. Try again\n");
+		ft_printf(PCH"\nWrong PID. Try again\n");
 	else if (error == 2)
 	{
-		ft_printf(LPCH"\nWrong format. please try: ./client |");
-		ft_printf(BBBL" [server's PID] ");
-		ft_printf(LPCH"| \"message\"\n");
+		ft_printf(PCH"\nWrong format. please try: ./client |");
+		ft_printf(BB" [server's PID] ");
+		ft_printf(PCH"| \"message\"\n");
 	}
 	exit (1);
 }
 
 static void	send_char(pid_t pid, char c)
 {
-	int	i;
+	t_utils	utils;
 
-	i = 7;
-	while (i >= 0)
+	utils.i = 7;
+	while (utils.i >= 0)
 	{
-		if (c >> i & 1)
+		if (c >> utils.i & 1)
 		{
 			if (kill(pid, SIGUSR1) == -1)
 				error_message(2);
@@ -42,29 +42,26 @@ static void	send_char(pid_t pid, char c)
 			if (kill(pid, SIGUSR2) == -1)
 				error_message(2);
 		}
-		i--;
+		utils.i--;
 		usleep(100);
 	}
 }
 
 static void	handler(int sig)
 {
-	static int	bool = 1;
+	static t_utils	utils;
 
-	if (sig == SIGUSR1 && bool)
+	if (sig == SIGUSR1 && utils.i == 0)
 	{
-		ft_printf(LGTP"\nMessage received and printed with succes :)\n");
-		bool = 0;
+		ft_printf(LP"\nMessage received and printed with success!\n");
+		utils.i = 1;
 	}
-	else
-		bool = 1;
 }
 
 int	main(int ac, char **av)
 {
 	struct sigaction	sa;
-	pid_t				pid;
-	int					i;
+	t_utils				utils;
 
 	if (ac != 3)
 	{
@@ -76,13 +73,13 @@ int	main(int ac, char **av)
 	sa.sa_flags = 0;
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
-	pid = ft_atoi(av[1]);
-	i = 0;
-	while (av[2][i])
+	utils.pid = ft_atoi(av[1]);
+	utils.cmptr = 0;
+	while (av[2][utils.cmptr])
 	{
-		send_char(pid, av[2][i]);
-		i++;
+		send_char(utils.pid, av[2][utils.cmptr]);
+		utils.cmptr++;
 	}
-	send_char(pid, '\0');
+	send_char(utils.pid, '\0');
 	return (0);
 }

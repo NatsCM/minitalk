@@ -6,7 +6,7 @@
 /*   By: ncardozo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 14:13:23 by ncardozo          #+#    #+#             */
-/*   Updated: 2023/04/22 22:26:16 by ncardozo         ###   ########.fr       */
+/*   Updated: 2023/04/23 06:33:41 by ncardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,20 @@
 
 typedef struct s_utils
 {
-	pid_t	pid_cl;
+	pid_t	pid;
 	int		cmptr;
+	int		i;
+	size_t	old_size;
 	char	c;
+	char	*new_msg;
 	char	*msg;
 }	t_utils;
 
-// typedef struct s_vars
-// {
-// 	int		cmptr;
-// 	char	c;
-// }	t_vars;
-
 /*----------------- ANSI Color codes -------------------*/
-# define BBBL "\e[38;5;123m"
-# define LGTV "\e[38;5;183m"
-# define LGTP "\e[38;5;212m"
-# define LPCH "\e[38;5;210m"
-# define YLLW "\e[38;5;222m"
+# define BB "\e[38;5;123m"
+# define LV "\e[38;5;183m"
+# define LP "\e[38;5;225m"
+# define PCH "\e[38;5;210m"
+# define LY "\e[38;5;222m"
 
 #endif
