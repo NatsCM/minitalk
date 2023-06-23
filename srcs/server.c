@@ -6,7 +6,7 @@
 /*   By: ncardozo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 23:27:00 by ncardozo          #+#    #+#             */
-/*   Updated: 2023/04/23 06:08:19 by ncardozo         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:51:49 by ncardozo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	main(int ac, char **av)
 	struct sigaction	sa;
 
 	(void)av;
-	if (ac != 1)
+	if (ac == 1)
 	{
 		error_m(1);
 		exit (1);
